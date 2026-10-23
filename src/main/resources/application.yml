@@ -1,8 +1,11 @@
+server:
+  port: 8080
+
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/shieldher
-    username: shieldher
-    password: shieldher
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/shieldher}
+    username: ${DB_USERNAME:shieldher}
+    password: ${DB_PASSWORD:shieldher}
   jpa:
     hibernate:
       ddl-auto: update
@@ -10,6 +13,7 @@ spring:
   sql:
     init:
       mode: always
+
 jwt:
-  secret: change-me-to-a-long-random-string-at-least-32-chars
-  expiration-ms: 86400000
+  secret: ${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+  expiration-ms: ${JWT_EXPIRATION_MS:86400000}
