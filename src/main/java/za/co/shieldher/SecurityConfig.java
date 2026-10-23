@@ -1,4 +1,4 @@
-package za.co.shieldher.config;
+package za.co.shieldher;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
