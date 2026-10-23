@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface AlertRepository extends JpaRepository<Alert, Long> {
 
-    List<Alert> findByUserIdOrderByCreatedAtDesc(Long userId);
+    List<Alert> findByUserIdOrderByCreatedAtDescIdDesc(Long userId);
 }

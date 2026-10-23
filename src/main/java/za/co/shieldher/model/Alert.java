@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 @Table(name = "alerts")
@@ -33,8 +34,9 @@ public class Alert {
     @Column(nullable = false, length = 20)
     private AlertStatus status;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private String deliveryMode;
+    private DeliveryMode deliveryMode;
 
     @Column(nullable = false)
     private int contactsTotal;
@@ -47,7 +49,7 @@ public class Alert {
 
     @PrePersist
     protected void onCreate() {
-        this.createdAt = Instant.now();
+        this.createdAt = Instant.now().truncatedTo(ChronoUnit.SECONDS);
         if (this.status == null) {
             this.status = AlertStatus.PENDING;
         }

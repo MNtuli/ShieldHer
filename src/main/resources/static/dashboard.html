@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS - ShieldHer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="bar">
+    <strong>ShieldHer</strong>
+    <nav><a href="contacts.html">Contacts</a> &middot; <a href="resources.html">Support</a> &middot; <button type="button" id="logout-btn">Log out</button></nav>
+</header>
+<main>
+    <h1>Need help?</h1>
+    <p class="muted">Press SOS to alert your trusted contacts.</p>
+
+    <button id="sos-btn" type="button" aria-describedby="result">SOS</button>
+
+    <div class="card">
+        <label for="message">Message (optional, max 500 characters)</label>
+        <textarea id="message" rows="2" maxlength="500" placeholder="I feel unsafe, please call me."></textarea>
+        <label class="check" for="share-location">
+            <input type="checkbox" id="share-location">
+            <span>Include my location. Your browser will ask for permission. It is only sent with this alert.</span>
+        </label>
+    </div>
+
+    <div id="result" role="status" aria-live="polite"></div>
+
+    <p class="help card">In immediate danger, call SAPS <strong>10111</strong> or the GBV Command Centre <strong>0800 428 428</strong>. ShieldHer does not replace emergency services.</p>
+
+    <section class="card">
+        <h2>Recent alerts</h2>
+        <ul id="alerts" class="alerts"></ul>
+        <p id="alerts-empty" class="muted" hidden>No alerts yet.</p>
+        <p id="alerts-error" class="muted" hidden></p>
+    </section>
+</main>
+<script src="js/api.js"></script>
+<script src="js/sos.js"></script>
+</body>
+</html>
