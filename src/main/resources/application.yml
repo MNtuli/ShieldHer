@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
+  config:
+    import: optional:file:.env[.properties]
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/shieldher}
     username: ${DB_USERNAME:shieldher}
