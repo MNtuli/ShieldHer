@@ -6,7 +6,7 @@ Closes SH-__
 2.
 
 ## Checklist
-- [ ] Follows `docs/API_CONTRACT.md` (or the contract is updated in this PR)
+- [ ] Follows docs/API_CONTRACT.md (or the contract is updated in this PR)
 - [ ] App starts locally and I tested the change
 - [ ] CI is green
 - [ ] No secrets or personal data committed or logged
