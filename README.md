@@ -158,20 +158,57 @@ shieldher/
 
 ## 7. Getting Started
 
-**Prerequisites:** Java 17+, Maven, PostgreSQL.
+**Prerequisites:** Java 17+ (JDK 21 recommended), PostgreSQL 16. Maven is bundled (`mvnw`).
 
-```bash
-# 1. Create the database
-sudo -u postgres psql -c "CREATE DATABASE shieldher;"
-sudo -u postgres psql -c "CREATE USER shieldher WITH PASSWORD 'shieldher';"
-sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE shieldher TO shieldher;"
+**1. Create the database** (Windows PowerShell; use your own `postgres` password)
 
-# 2. Configure src/main/resources/application.yml (DB URL, user, JWT secret)
-
-# 3. Run
-./mvnw spring-boot:run
-# App: http://localhost:8080
+```powershell
+$env:PGPASSWORD = '<your postgres password>'
+& "C:\Program Files\PostgreSQL\16\bin\psql.exe" -U postgres -h localhost -c "CREATE USER shieldher WITH PASSWORD 'shieldher';"
+& "C:\Program Files\PostgreSQL\16\bin\psql.exe" -U postgres -h localhost -c "CREATE DATABASE shieldher OWNER shieldher;"
 ```
+
+Linux/macOS: `sudo -u postgres psql -c "CREATE USER shieldher WITH PASSWORD 'shieldher';"` and `sudo -u postgres psql -c "CREATE DATABASE shieldher OWNER shieldher;"`
+
+**2. Create your `.env`** (never commit it)
+
+```powershell
+Copy-Item .env.example .env      # Linux/macOS: cp .env.example .env
+```
+
+Then set `JWT_SECRET` to a Base64 string of at least 32 bytes. Generate one:
+
+```powershell
+[Convert]::ToBase64String((1..48 | ForEach-Object { Get-Random -Maximum 256 }) -as [byte[]])
+```
+
+Spring loads `.env` automatically (`spring.config.import`), so run from the project root.
+
+**3. Run**
+
+```powershell
+.\mvnw.cmd spring-boot:run       # Linux/macOS: ./mvnw spring-boot:run
+```
+
+App: http://localhost:8080
+
+**4. Smoke test**
+
+```powershell
+Invoke-RestMethod -Method Post http://localhost:8080/api/auth/register -ContentType "application/json" `
+  -Body '{"fullName":"Test User","email":"test@shieldher.co.za","password":"secret123","phoneNumber":"0821234567"}'
+```
+
+You should get back a `token`.
+
+**Troubleshooting**
+
+| Symptom | Fix |
+|---|---|
+| `Connection refused` on 5432 | PostgreSQL is not running: `Get-Service *postgres*` |
+| `Could not resolve placeholder 'JWT_SECRET'` | `.env` missing or not in the project root |
+| `TypeTag :: UNKNOWN` on build | Lombok too old for your JDK; keep `lombok.version` current in `pom.xml` |
+| `password authentication failed` | Wrong DB password in `.env` |
 
 ## 8. Safety, Privacy & Limitations
 
@@ -195,7 +232,3 @@ sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE shieldher TO shieldhe
 | `<name>` | Database / DevOps |
 
 
-# to run spring boot
-
-- .\mvnw.cmd clean compile
-- .\mvnw.cmd spring-boot:run
