@@ -193,3 +193,9 @@ sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE shieldher TO shieldhe
 | `<name>` | Front-end |
 | `<name>` | UI/UX (Figma) |
 | `<name>` | Database / DevOps |
+
+
+# to run spring boot
+
+- .\mvnw.cmd clean compile
+- .\mvnw.cmd spring-boot:run
