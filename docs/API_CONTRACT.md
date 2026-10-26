@@ -122,3 +122,20 @@ Verify all numbers before the demo.
 | 3. Support hub | resources.html + resources.js | GET /api/resources | Helplines (tap to call), reporting steps, safety tips |
 
 Login and register pages are entry screens and are not counted as MVP screens. A logged-out user visiting screens 1 or 2 is redirected to login. Token is kept in `localStorage` under `shieldher_token`; on any `401` the UI clears it and redirects to login.
+## Resources (public) - implemented
+
+### GET /api/resources
+No token needed. Response `200`: `[resource, ...]`, sorted by category then title.
+
+```json
+{
+  "id": 2,
+  "title": "GBV Command Centre",
+  "description": "Free, 24-hour helpline for gender-based violence.",
+  "category": "HELPLINE",
+  "phone": "0800 428 428",
+  "url": "https://www.gbv.org.za"
+}
+```
+
+`category` is one of `HELPLINE`, `REPORTING`, `SAFETY_TIP`. `phone` and `url` may be `null`.

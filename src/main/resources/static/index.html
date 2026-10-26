@@ -3,10 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShieldHer</title>
+    <title>ShieldHer - Protecting her voice. Securing her digital world.</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body style="font-family: sans-serif; padding: 2rem;">
-<h1>ShieldHer is Running</h1>
-<p>Landing page connected successfully.</p>
+<body>
+<header class="bar">
+    <strong>ShieldHer</strong>
+    <nav id="nav"><a href="resources.html">Support</a> &middot; <a href="login.html">Log in</a></nav>
+</header>
+<main>
+    <h1>You are not alone.</h1>
+    <p>ShieldHer helps you get support quickly if you are being harassed online: alert people you trust, keep their details ready, and find out how to report it.</p>
+
+    <p class="help card">In immediate danger, call SAPS <strong><a href="tel:10111">10111</a></strong> or the GBV Command Centre <strong><a href="tel:0800428428">0800 428 428</a></strong>. ShieldHer does not replace emergency services.</p>
+
+    <div class="actions" id="cta">
+        <a href="register.html"><button class="primary" type="button">Create an account</button></a>
+        <a href="login.html"><button class="secondary" type="button">Log in</button></a>
+    </div>
+
+    <section class="card">
+        <h2>What you can do</h2>
+        <ul class="contacts">
+            <li><span class="name">SOS alert</span><br>One big button that alerts your trusted contacts, with your location if you allow it.</li>
+            <li><span class="name">Trusted contacts</span><br>Keep the people you trust ready to be alerted.</li>
+            <li><span class="name">Support and reporting</span><br>Helplines and clear steps for reporting harassment. <a href="resources.html">Read it now, no account needed.</a></li>
+        </ul>
+    </section>
+
+    <p class="muted">We collect only what we need. Passwords are hashed. Your location is shared only inside an alert, and only if you allow it.</p>
+</main>
+<script src="js/api.js"></script>
+<script>
+  // Logged-in visitors go straight to the SOS screen.
+  if (getToken()) {
+    document.getElementById('nav').innerHTML = '<a href="dashboard.html">SOS</a> &middot; <a href="contacts.html">Contacts</a> &middot; <a href="resources.html">Support</a>';
+    document.getElementById('cta').innerHTML = '<a href="dashboard.html"><button class="primary" type="button">Go to SOS</button></a>';
+  }
+</script>
 </body>
 </html>
