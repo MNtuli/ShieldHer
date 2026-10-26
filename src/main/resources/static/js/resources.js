@@ -12,12 +12,10 @@ function buildNav() {
   if (!getToken()) return; // default nav already shows "Log in"
   nav.textContent = '';
   [['dashboard.html', 'SOS'], ['contacts.html', 'Contacts']].forEach(([href, label], i) => {
-    if (i) nav.append(' · ');
     const a = document.createElement('a');
     a.href = href; a.textContent = label;
     nav.appendChild(a);
   });
-  nav.append(' · ');
   const btn = document.createElement('button');
   btn.type = 'button'; btn.textContent = 'Log out';
   btn.addEventListener('click', logout);

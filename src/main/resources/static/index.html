@@ -5,40 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShieldHer - Protecting her voice. Securing her digital world.</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/theme.js"></script>
 </head>
 <body>
 <header class="bar">
-    <strong>ShieldHer</strong>
-    <nav id="nav"><a href="resources.html">Support</a> &middot; <a href="login.html">Log in</a></nav>
+    <a class="brand" href="index.html">ShieldHer</a>
+    <nav id="nav"><a href="resources.html">Get support</a><a href="login.html">Log in</a></nav>
 </header>
-<main>
-    <h1>You are not alone.</h1>
-    <p>ShieldHer helps you get support quickly if you are being harassed online: alert people you trust, keep their details ready, and find out how to report it.</p>
-
-    <p class="help card">In immediate danger, call SAPS <strong><a href="tel:10111">10111</a></strong> or the GBV Command Centre <strong><a href="tel:0800428428">0800 428 428</a></strong>. ShieldHer does not replace emergency services.</p>
-
-    <div class="actions" id="cta">
-        <a href="register.html"><button class="primary" type="button">Create an account</button></a>
-        <a href="login.html"><button class="secondary" type="button">Log in</button></a>
-    </div>
-
-    <section class="card">
-        <h2>What you can do</h2>
-        <ul class="contacts">
-            <li><span class="name">SOS alert</span><br>One big button that alerts your trusted contacts, with your location if you allow it.</li>
-            <li><span class="name">Trusted contacts</span><br>Keep the people you trust ready to be alerted.</li>
-            <li><span class="name">Support and reporting</span><br>Helplines and clear steps for reporting harassment. <a href="resources.html">Read it now, no account needed.</a></li>
-        </ul>
+<main class="wide">
+    <section class="hero">
+        <div>
+            <h1>You are not alone.</h1>
+            <p class="lead">If someone is harassing you online, ShieldHer helps you reach the people you trust in one tap, and shows you how to report it.</p>
+            <div class="actions" id="cta">
+                <a class="btn primary" href="register.html">Create a free account</a>
+                <a class="btn secondary" href="login.html">Log in</a>
+            </div>
+            <p class="muted">No account needed to read helplines and reporting steps. <a href="resources.html">Get support now</a></p>
+        </div>
+        <aside class="card urgent" aria-labelledby="urgent-title">
+            <h2 id="urgent-title">In danger right now?</h2>
+            <a class="call" href="tel:10111"><span>Police (SAPS)</span><strong>10111</strong></a>
+            <a class="call" href="tel:0800428428"><span>GBV Command Centre<br>Free, 24 hours</span><strong>0800 428 428</strong></a>
+            <p class="muted">ShieldHer does not replace emergency services.</p>
+        </aside>
     </section>
 
-    <p class="muted">We collect only what we need. Passwords are hashed. Your location is shared only inside an alert, and only if you allow it.</p>
+    <section class="features" aria-label="What ShieldHer does">
+        <div class="feature">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"/><path d="M12 8v4M12 15.5v.5"/></svg></div>
+            <h3>SOS alert</h3>
+            <p>One big button tells your trusted contacts you need help, with your location if you allow it.</p>
+        </div>
+        <div class="feature">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.5 3.2-5.5 6.5-5.5s5.9 2 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c1.9.7 3 2.4 3.5 5.2"/></svg></div>
+            <h3>Trusted contacts</h3>
+            <p>Keep the people you trust ready, so you do not have to think when it matters.</p>
+        </div>
+        <div class="feature">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4V4Z"/><path d="M8 9h8M8 13h5"/></svg></div>
+            <h3>Reporting guide</h3>
+            <p>Helplines and clear steps for saving evidence, reporting, and getting a protection order.</p>
+        </div>
+    </section>
+
+    <p class="muted">We collect only what we need. Passwords are hashed. Your location is only shared inside an alert, and only if you allow it.</p>
 </main>
 <script src="js/api.js"></script>
 <script>
-  // Logged-in visitors go straight to the SOS screen.
+  // Logged-in visitors get shortcuts to the app.
   if (getToken()) {
-    document.getElementById('nav').innerHTML = '<a href="dashboard.html">SOS</a> &middot; <a href="contacts.html">Contacts</a> &middot; <a href="resources.html">Support</a>';
-    document.getElementById('cta').innerHTML = '<a href="dashboard.html"><button class="primary" type="button">Go to SOS</button></a>';
+    document.getElementById('nav').innerHTML = '<a href="dashboard.html">SOS</a><a href="contacts.html">Contacts</a><a href="resources.html">Support</a>';
+    document.getElementById('cta').innerHTML = '<a class="btn primary" href="dashboard.html">Go to SOS</a><a class="btn secondary" href="contacts.html">My contacts</a>';
   }
 </script>
 </body>
