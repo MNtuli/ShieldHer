@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - ShieldHer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="bar">
+    <strong>ShieldHer</strong>
+    <nav id="nav"><a href="login.html">Log in</a></nav>
+</header>
+<main>
+    <h1>Support and reporting</h1>
+    <p class="help card">In immediate danger, call SAPS <strong><a href="tel:10111">10111</a></strong> or the GBV Command Centre <strong><a href="tel:0800428428">0800 428 428</a></strong>. ShieldHer does not replace emergency services.</p>
+
+    <p id="loading" class="muted">Loading...</p>
+    <div id="load-error" hidden>
+        <p class="msg bad" id="load-error-text" role="alert"></p>
+        <button class="secondary" type="button" id="retry-btn">Try again</button>
+    </div>
+    <div id="groups"></div>
+</main>
+<script src="js/api.js"></script>
+<script src="js/resources.js"></script>
+</body>
+</html>
