@@ -1,0 +1,26 @@
+databases:
+  - name: shieldher-db
+    plan: free
+    databaseName: shieldher
+
+services:
+  - type: web
+    name: shieldher
+    runtime: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: DB_HOST
+        fromDatabase: { name: shieldher-db, property: host }
+      - key: DB_PORT
+        fromDatabase: { name: shieldher-db, property: port }
+      - key: DB_NAME
+        fromDatabase: { name: shieldher-db, property: database }
+      - key: DB_USERNAME
+        fromDatabase: { name: shieldher-db, property: user }
+      - key: DB_PASSWORD
+        fromDatabase: { name: shieldher-db, property: password }
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRATION_MS
+        value: "86400000"
